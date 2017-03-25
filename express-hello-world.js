@@ -4,16 +4,20 @@ const express = require("express");
 
 const app = express();
 
-const requestTime = (req, res, next) => {
- req.requestTime = Date.now()
-}
+// const requestTime = (req, res, next) => {
+//  req.requestTime = Date.now()
+// }
 
-app.use(requestTime)
+// app.use(requestTime)
 
 app.get("/", (req, res, next) => {
-  console.log("hello world");
+  res.send(`<h1>hello world</h1>`);
 });
 
-app.listen(3000, ()=> {
-  console.log("Server is up on 3000");
+let PORT = process.env.prot || 8080;
+
+app.listen(PORT, ()=> {
+  console.log(`Server is up on ${PORT}`);
 })
+
+// app.listen(3000);
